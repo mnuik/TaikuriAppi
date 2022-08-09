@@ -7,8 +7,16 @@ namespace TaikuriAppi.Models
 {
     public partial class VarausDBContext : DbContext
     {
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<VarausDBContext> _logger;
+        public VarausDBContext(IConfiguration configuration, ILogger<VarausDBContext> logger)
+        {
+            _configuration = configuration;
+            _logger = logger;
+        }
         public VarausDBContext()
         {
+           
         }
 
         public VarausDBContext(DbContextOptions<VarausDBContext> options)
@@ -20,14 +28,7 @@ namespace TaikuriAppi.Models
         public virtual DbSet<Taikuri> Taikuris { get; set; } = null!;
         public virtual DbSet<Varaukset> Varauksets { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=localhost;database=VarausDB;trusted_connection=true");
-            }
-        }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
