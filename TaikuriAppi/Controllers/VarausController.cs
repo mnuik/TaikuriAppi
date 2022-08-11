@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaikuriAppi.Models;
-
+////////////////////////////////////////////////////////////////TÄMÄ EI ENÄÄ OLE KÄYTÖSSÄ
 namespace TaikuriAppi.Controllers
 {
     public class VarausController : Controller
